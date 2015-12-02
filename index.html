@@ -19,18 +19,22 @@
           <h3>Timeline</h3>
       </div> 
 
-    <script>
 
+    <script>
       $(document).ready(function(){
         var $stream = $('.live-stream');
         //$body.html('');
 
         var index = streams.home.length - 1;
         while(index >= 0){
+          var currentDate = new Date();
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
+          var $tweet = $('<div class="tweet"></div>');
+          var $timeStamp = $('<div class="timeStamp"></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $timeStamp.text('Tweeted on ' + currentDate);
           $tweet.appendTo($stream);
+          $timeStamp.appendTo($stream)
           index -= 1;
         }
 
@@ -40,9 +44,8 @@
           $nameDisplay.text('@' + name);
           $('.user-sidebar').append($nameDisplay);
         });
-
       });
-
     </script>
+
   </body>
 </html>
