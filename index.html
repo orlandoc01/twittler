@@ -29,17 +29,18 @@
       $(document).ready(function(){
         var $stream = $('#live-tweet-list');
         //$body.html('');
+        var lastTweetIndex = -1;
 
         streams.home.forEach(function(tweet, index) {
-           var currentDate = new Date();
           var $tweetItem = $('<li class="live-tweet"></li>')
           var $tweet = $('<div class="tweet"></div>');
           var $timeStamp = $('<div class="timeStamp"></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $timeStamp.text('Tweeted on ' + currentDate);
+          $timeStamp.text('Tweeted on ' + tweet.created_at);
           $timeStamp.prependTo($tweetItem);
           $tweet.prependTo($tweetItem);
           $tweetItem.appendTo($stream);
+          lastTweetIndex= index;
           
         });
 
@@ -70,6 +71,22 @@
             $tweetItem.appendTo(UserTweets);
           });
         });
+
+        setInterval(function() {
+          while (lastTweetIndex != streams.home.length - 1) {
+            lastTweetIndex++;
+            var tweet = streams.home[lastTweetIndex];
+            var $tweetItem = $('<li class="live-tweet"></li>')
+            var $tweet = $('<div class="tweet"></div>');
+            var $timeStamp = $('<div class="timeStamp"></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            $timeStamp.text('Tweeted on ' + tweet.created_at);
+            $timeStamp.prependTo($tweetItem);
+            $tweet.prependTo($tweetItem);
+            $tweetItem.prependTo($stream);
+
+          }
+        }, 1500)
 
     
 
