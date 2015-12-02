@@ -19,7 +19,7 @@
 
     <div id="user-timeline">
 
-      <h3>User Timeline</h3>
+      <h3>No User Selected</h3>
       <ul id="user-tweets"></ul>
 
     </div> 
@@ -49,6 +49,26 @@
           var $nameLink = $('<a href="#" class="user-link">@'+name+'</a>');
           $nameDisplay.append($nameLink)
           $('#user-list').append($nameDisplay);
+        });
+
+        $('a.user-link').on('click',function(event){
+          event.preventDefault();
+          var user = $(this).text();
+          var user = user.slice(1) //Get rid of @ symbol
+          $('#user-timeline').find('h3').text("@" + user + "'s Timeline")
+          var tweets = streams.users[user];
+          var UserTweets = $('#user-tweets');
+          UserTweets.find('li').remove();
+          tweets.forEach(function(tweet) {
+            var $tweetItem = $('<li class="user-tweet"></li>')
+            var $tweet = $('<div class="tweet"></div>');
+            var $timeStamp = $('<div class="timeStamp"></div>');
+            $tweet.text('@' + tweet.user + ': ' + tweet.message);
+            $timeStamp.text('Tweeted on ' + tweet.created_at);
+            $timeStamp.prependTo($tweetItem);
+            $tweet.prependTo($tweetItem);
+            $tweetItem.appendTo(UserTweets);
+          });
         });
 
     
