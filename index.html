@@ -28,10 +28,13 @@
 
     <script>
       $(document).ready(function(){
+
+        //$stream will reference the live tweet list
         var $stream = $('#live-tweet-list');
-        //$body.html('');
         var lastTweetIndex = -1;
 
+        //Function below will create a new TweetList item to add to $stream whenever
+        //it is given a tweet object
         function createTweetListItem(tweet) {
           var $tweetListItem = $('<li class="live-tweet"></li>')
           var $tweet = $('<div class="tweet"></div>');
@@ -46,6 +49,10 @@
           return $tweetListItem;
         }
 
+        //Function below will trigger whenever a userhandle is clicked. It essentially
+        //shows all of a user's tweets in the user-timeline div. It is given an event
+        //object when triggered with the on() function to prevent typicaly anchor behavior
+        //when an anchor is clicked using the preventDefault method
         function showUserTimeline(event) {
            event.preventDefault();
           var user = $(this).text();
@@ -60,6 +67,8 @@
           });
         }
 
+        //For each tweet within the streams.home array, we create a tweet li item and display
+        //it in the $stream. We also keep track of whatever the lastTweet index was when finished.
         streams.home.forEach(function(tweet, index) {
           var $tweetListItem = createTweetListItem(tweet);
           $tweetListItem.appendTo($stream);
@@ -67,6 +76,9 @@
           
         });
 
+        //For each user we follow, we want to create a li item and display it in the user-sidebar
+        //div. We also attach the showUserTimeline function to each user handle link, which will
+        //trigger whenever the handle is clicked
         users.forEach( function(name, index) {
           //alert(name)
           var $nameDisplay = $('<li></li>');
@@ -76,6 +88,8 @@
           $('#user-list').append($nameDisplay);
         });
 
+        //we attach to the update button a function that continuously updates the $stream list
+        //until we've read all of the tweets at the present moment whenever it is clicked
         $("#update-button").on('click',function() {
           while (lastTweetIndex != streams.home.length - 1) {
             lastTweetIndex++;
