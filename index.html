@@ -7,6 +7,9 @@
   <body>
     <div class="user-sidebar">
       <h4>Users you're following</h4>
+      <ul class = "user-list">
+
+      <ul>
     </div>
 
     <div class="live-stream">
@@ -37,9 +40,10 @@
 
         users.forEach( function(name, index) {
           //alert(name)
-          var $nameDisplay = $('<div class="user"></div>');
-          $nameDisplay.text('@' + name);
-          $('.user-sidebar').append($nameDisplay);
+          var $nameDisplay = $('<li></li>');
+          var $nameLink = $('<a href="#" class="user-link">@'+name+'</a>');
+          $nameDisplay.append($nameLink)
+          $('.user-list').append($nameDisplay);
         });
       });
     </script>
