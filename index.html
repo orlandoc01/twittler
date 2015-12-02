@@ -7,18 +7,18 @@
   <body>
 
 
-    <div id="user-sidebar" style="float:left;width:40%">
+    <div id="user-sidebar" style="float:left;width:30%">
       <h4>Users you're following</h4>
       <ul id="user-list"></ul>
     </div>
 
-    <div id="live-stream" style = "float:right;width:60%">
+    <div id="live-stream" style = "float:right;width:70%">
       <h2>Home Timeline</h2>
       <button id="update-button">Update TimeLine</button>
       <ul id="live-tweet-list"></ul>
     </div>
 
-    <div id="user-timeline" style="float:left;width:40%">
+    <div id="user-timeline" style="float:left;width:30%">
 
       <h3>No User Selected</h3>
       <ul id="user-tweets"></ul>
@@ -33,34 +33,21 @@
         var lastTweetIndex = -1;
 
         function createTweetListItem(tweet) {
-          var $tweetItem = $('<li class="live-tweet"></li>')
+          var $tweetListItem = $('<li class="live-tweet"></li>')
           var $tweet = $('<div class="tweet"></div>');
           var $timeStamp = $('<div class="timeStamp"></div>');
+          var $handle = $('<a href="#" class="user-link">@'+tweet.user+'</a>');
+          $handle.on('click', showUserTimeline)
           $tweet.text(":" + tweet.message);
-          $tweet.prepend($('<a href="#" class="user-link">@'+tweet.user+'</a>'));
+          $tweet.prepend($handle);
           $timeStamp.text('Tweeted on ' + tweet.created_at);
-          $timeStamp.prependTo($tweetItem);
-          $tweet.prependTo($tweetItem);
-          return $tweetItem;
+          $timeStamp.prependTo($tweetListItem);
+          $tweet.prependTo($tweetListItem);
+          return $tweetListItem;
         }
 
-        streams.home.forEach(function(tweet, index) {
-          var $tweetItem = createTweetListItem(tweet);
-          $tweetItem.appendTo($stream);
-          lastTweetIndex= index;
-          
-        });
-
-        users.forEach( function(name, index) {
-          //alert(name)
-          var $nameDisplay = $('<li></li>');
-          var $nameLink = $('<a href="#" class="user-link">@'+name+'</a>');
-          $nameDisplay.append($nameLink)
-          $('#user-list').append($nameDisplay);
-        });
-
-        $('a.user-link').on('click',function(event){
-          event.preventDefault();
+        function showUserTimeline(event) {
+           event.preventDefault();
           var user = $(this).text();
           var user = user.slice(1) //Get rid of @ symbol
           $('#user-timeline').find('h3').text("@" + user + "'s Timeline")
@@ -71,14 +58,30 @@
             var $tweetItem = createTweetListItem(tweet);
             $tweetItem.prependTo(UserTweets);
           });
+        }
+
+        streams.home.forEach(function(tweet, index) {
+          var $tweetListItem = createTweetListItem(tweet);
+          $tweetListItem.appendTo($stream);
+          lastTweetIndex= index;
+          
+        });
+
+        users.forEach( function(name, index) {
+          //alert(name)
+          var $nameDisplay = $('<li></li>');
+          var $nameLink = $('<a href="#" class="user-link">@'+name+'</a>');
+          $nameLink.on('click', showUserTimeline);
+          $nameDisplay.append($nameLink)
+          $('#user-list').append($nameDisplay);
         });
 
         $("#update-button").on('click',function() {
           while (lastTweetIndex != streams.home.length - 1) {
             lastTweetIndex++;
             var tweet = streams.home[lastTweetIndex];
-            var $tweetItem = createTweetListItem(tweet);
-            $tweetItem.prependTo($stream);
+            var $tweetListItem = createTweetListItem(tweet);
+            $tweetListItem.prependTo($stream);
 
           }
         });
