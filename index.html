@@ -22,21 +22,18 @@
 
     <script>
       $(document).ready(function(){
-        var $stream = $('.live-stream');
+        var $stream = $('.live-stream').find('h2');
         //$body.html('');
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
+        streams.home.forEach(function(tweet, index) {
           var currentDate = new Date();
-          var tweet = streams.home[index];
           var $tweet = $('<div class="tweet"></div>');
           var $timeStamp = $('<div class="timeStamp"></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
           $timeStamp.text('Tweeted on ' + currentDate);
-          $tweet.appendTo($stream);
-          $timeStamp.appendTo($stream)
-          index -= 1;
-        }
+          $tweet.insertAfter($stream);
+          $timeStamp.insertAfter($stream);
+        });
 
         users.forEach( function(name, index) {
           //alert(name)
