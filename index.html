@@ -7,17 +7,17 @@
   <body>
 
 
-    <div id="user-sidebar">
+    <div id="user-sidebar" style="float:left;width:40%">
       <h4>Users you're following</h4>
       <ul id="user-list"></ul>
     </div>
 
-    <div id="live-stream">
+    <div id="live-stream" style = "float:right;width:60%">
       <h2>Home Timeline</h2>
       <ul id="live-tweet-list"></ul>
     </div>
 
-    <div id="user-timeline">
+    <div id="user-timeline" style="float:left;width:40%">
 
       <h3>No User Selected</h3>
       <ul id="user-tweets"></ul>
@@ -68,7 +68,7 @@
             $timeStamp.text('Tweeted on ' + tweet.created_at);
             $timeStamp.prependTo($tweetItem);
             $tweet.prependTo($tweetItem);
-            $tweetItem.appendTo(UserTweets);
+            $tweetItem.prependTo(UserTweets);
           });
         });
 
