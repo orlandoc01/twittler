@@ -31,7 +31,7 @@
         //$body.html('');
         var lastTweetIndex = -1;
 
-        streams.home.forEach(function(tweet, index) {
+        function createTweetListItem(tweet) {
           var $tweetItem = $('<li class="live-tweet"></li>')
           var $tweet = $('<div class="tweet"></div>');
           var $timeStamp = $('<div class="timeStamp"></div>');
@@ -39,6 +39,11 @@
           $timeStamp.text('Tweeted on ' + tweet.created_at);
           $timeStamp.prependTo($tweetItem);
           $tweet.prependTo($tweetItem);
+          return $tweetItem;
+        }
+
+        streams.home.forEach(function(tweet, index) {
+          var $tweetItem = createTweetListItem(tweet);
           $tweetItem.appendTo($stream);
           lastTweetIndex= index;
           
@@ -61,13 +66,7 @@
           var UserTweets = $('#user-tweets');
           UserTweets.find('li').remove();
           tweets.forEach(function(tweet) {
-            var $tweetItem = $('<li class="user-tweet"></li>')
-            var $tweet = $('<div class="tweet"></div>');
-            var $timeStamp = $('<div class="timeStamp"></div>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message);
-            $timeStamp.text('Tweeted on ' + tweet.created_at);
-            $timeStamp.prependTo($tweetItem);
-            $tweet.prependTo($tweetItem);
+            var $tweetItem = createTweetListItem(tweet);
             $tweetItem.prependTo(UserTweets);
           });
         });
@@ -76,13 +75,7 @@
           while (lastTweetIndex != streams.home.length - 1) {
             lastTweetIndex++;
             var tweet = streams.home[lastTweetIndex];
-            var $tweetItem = $('<li class="live-tweet"></li>')
-            var $tweet = $('<div class="tweet"></div>');
-            var $timeStamp = $('<div class="timeStamp"></div>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message);
-            $timeStamp.text('Tweeted on ' + tweet.created_at);
-            $timeStamp.prependTo($tweetItem);
-            $tweet.prependTo($tweetItem);
+            var $tweetItem = createTweetListItem(tweet);
             $tweetItem.prependTo($stream);
 
           }
