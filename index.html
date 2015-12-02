@@ -14,6 +14,7 @@
 
     <div id="live-stream" style = "float:right;width:60%">
       <h2>Home Timeline</h2>
+      <button id="update-button">Update TimeLine</button>
       <ul id="live-tweet-list"></ul>
     </div>
 
@@ -35,7 +36,8 @@
           var $tweetItem = $('<li class="live-tweet"></li>')
           var $tweet = $('<div class="tweet"></div>');
           var $timeStamp = $('<div class="timeStamp"></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $tweet.text(":" + tweet.message);
+          $tweet.prepend($('<a href="#" class="user-link">@'+tweet.user+'</a>'));
           $timeStamp.text('Tweeted on ' + tweet.created_at);
           $timeStamp.prependTo($tweetItem);
           $tweet.prependTo($tweetItem);
@@ -71,7 +73,7 @@
           });
         });
 
-        setInterval(function() {
+        $("#update-button").on('click',function() {
           while (lastTweetIndex != streams.home.length - 1) {
             lastTweetIndex++;
             var tweet = streams.home[lastTweetIndex];
@@ -79,7 +81,7 @@
             $tweetItem.prependTo($stream);
 
           }
-        }, 1500)
+        });
 
     
 
