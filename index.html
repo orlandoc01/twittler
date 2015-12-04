@@ -3,27 +3,94 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <style type="text/css">
+      #container {
+        position: absolute;
+        position:absolute;
+        height:50em;
+        max-width:200em;
+        border:1px solid;
+      }
+
+      #user-sidebar {
+        float:left;
+        width:30%;
+      }
+
+      #user-list {
+
+      }
+
+      #live-stream {
+        float:right;
+        width:70%;
+
+      }
+
+      #live-tweet-list {
+
+      }
+
+      #user-timeline {
+        float:left;
+        width:30%;
+
+      }
+
+      #user-tweets {
+
+
+      }
+
+      #update-button {
+
+
+      }
+
+      .tweet {
+
+
+      }
+      .tweet-message {
+
+
+      }
+
+      .timeStamp {
+
+
+      }
+
+      .user-link {
+
+
+      }
+
+
+
+
+    </style>
+
   </head>
   <body>
 
+    <div id="container">
+      <div id="user-sidebar">
+        <h4>Users you're following</h4>
+        <ul id="user-list"></ul>
+      </div>
 
-    <div id="user-sidebar" style="float:left;width:30%">
-      <h4>Users you're following</h4>
-      <ul id="user-list"></ul>
+      <div id="live-stream">
+        <h2>Home Timeline</h2>
+        <button id="update-button">Update TimeLine</button>
+        <ul id="live-tweet-list"></ul>
+      </div>
+
+      <div id="user-timeline">
+        <h3>No User Selected</h3>
+        <ul id="user-tweets"></ul>
+      </div> 
     </div>
-
-    <div id="live-stream" style = "float:right;width:70%">
-      <h2>Home Timeline</h2>
-      <button id="update-button">Update TimeLine</button>
-      <ul id="live-tweet-list"></ul>
-    </div>
-
-    <div id="user-timeline" style="float:left;width:30%">
-
-      <h3>No User Selected</h3>
-      <ul id="user-tweets"></ul>
-
-    </div> 
 
 
     <script>
@@ -36,8 +103,8 @@
         //Function below will create a new TweetList item to add to $stream whenever
         //it is given a tweet object
         function createTweetListItem(tweet) {
-          var $tweetListItem = $('<li class="live-tweet"></li>')
-          var $tweet = $('<div class="tweet"></div>');
+          var $tweetListItem = $('<li class="tweet"></li>')
+          var $tweet = $('<div class="tweet-message"></div>');
           var $timeStamp = $('<div class="timeStamp"></div>');
           var $handle = $('<a href="#" class="user-link">@'+tweet.user+'</a>');
           $handle.on('click', showUserTimeline)
