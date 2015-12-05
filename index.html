@@ -4,36 +4,63 @@
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
     <style type="text/css">
+    /* Class used to contain floats */
+      .group:before, .group:after {
+        content: "";
+        display: table;
+      }
+      .group:after {
+        clear: both;
+      }
+      .group {
+        clear: both;
+        zoom: 1;
+      }
+    /*End of Group Class used to contain floats */
+
+    /*Formatting different elements on twittler*/
       #container {
         position: absolute;
-        position:absolute;
-        height:50em;
-        max-width:200em;
-        border:1px solid;
+        height: 100%;
+        width: 100%;
+        background: yellow;
+      }
+
+       #live-stream {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        width: 60%;
+        background: rgb(230,137,137);
+        overflow: auto;
       }
 
       #user-sidebar {
-        float:left;
-        width:30%;
+        position: absolute;
+        top: 0px
+        left: 0px;
+        height:25%;
+        width:40%;
+        background: rgb(137,230,149);
+      }
+
+      #user-timeline {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        height: 75%;
+        width: 40%;
+        background: rgb(156,185,235);
+        overflow: auto;
+
       }
 
       #user-list {
 
       }
 
-      #live-stream {
-        float:right;
-        width:70%;
-
-      }
-
       #live-tweet-list {
-
-      }
-
-      #user-timeline {
-        float:left;
-        width:30%;
 
       }
 
