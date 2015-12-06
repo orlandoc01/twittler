@@ -1,0 +1,128 @@
+ /* Class used to contain floats */
+     
+ .group:before, .group:after {
+        content: "";
+        display: table;
+      }
+      .group:after {
+        clear: both;
+      }
+      .group { 
+        clear: both;
+        zoom: 1;
+      }
+    /*End of Group Class used to contain floats */
+
+    /*Formatting different elements on twittler*/
+    body {
+      font-family: Helvetica;
+
+    }
+
+      #container {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+      }
+
+       #live-stream {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        width: 60%;
+        border: 1px solid;
+        overflow: auto;
+        border-radius: 5px;
+      }
+
+      #user-sidebar {
+        position: absolute;
+        top: 0px
+        left: 0px;
+        height:25%;
+        width:40%;
+        border: 1px solid;
+        border-radius: 5px;
+      }
+
+      #user-timeline {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        height: 75%;
+        width: 40%;
+        border: 1px solid;
+        overflow: auto;
+        border-radius: 5px;
+
+      }
+      h2 {
+        position: relative;
+        left: 38%;
+      }
+      h3 {
+        position: relative;
+        left: 15%;
+
+      }
+      h4 {
+        position: relative;
+        left: 15%;
+      }
+
+      #user-list {
+        position: relative;
+        left: 15%;
+
+      }
+
+      #live-tweet-list {
+        position: relative;
+        left: 10%;
+
+      }
+
+      #user-tweets {
+        position: relative;
+        left: 15%;
+
+
+      }
+
+      #update-button {
+        position: relative;
+        left: 40%;
+
+
+
+      }
+
+      .tweet {
+        margin: 10px 0px;
+
+
+      }
+      .tweet-message {
+
+
+      }
+
+      .timeStamp {
+
+
+      }
+
+      li {
+        margin: 10px 0px;
+
+      }
+
+
+
+
+  
+
+  
