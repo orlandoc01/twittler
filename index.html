@@ -11,18 +11,18 @@
     <div class="container">
 
       <div class="user-sidebar">
-        <h4>Users you're following</h4>
+        <h4 class="headers">Users you're following</h4>
         <ul class="user-list"></ul>
       </div>
 
       <div class="main-panel" id="live-tweets">
-        <h2>Home Timeline</h2>
+        <h2 class="headers">Home Timeline</h2>
         <button class="update-button">Update Live Tweets TimeLine</button>
         <ul class="main-tweets"></ul>
       </div>
 
       <div class="side-panel" id="user-timeline">
-        <h3>No User Selected</h3>
+        <h3 class="headers">No User Selected</h3>
         <ul class="side-tweets"></ul>
       </div> 
     </div>
@@ -162,7 +162,9 @@
 
         /*we attach to the update button a function that continuously updates the $stream list
         until we've read all of the tweets at the present moment whenever it is clicked*/
-        $(".update-button").on('click',function() {
+        $(".update-button").on('click',function(event) {
+          event.preventDefault();
+          event.stopPropagation();
           while (lastTweetIndex != streams.home.length - 1) {
             lastTweetIndex++;
             var tweet = streams.home[lastTweetIndex];
