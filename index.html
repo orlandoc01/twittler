@@ -97,10 +97,19 @@
         //trigger whenever the handle is clicked
         users.forEach( function(name, index) {
           //alert(name)
-          var $nameDisplay = $('<li></li>');
+          var $nameDisplay = $('<li class="user-handle-panel"></li>');
           var $nameLink = $('<a href="#" class="user-link">@'+name+'</a>');
           $nameLink.on('click', showUserTimeline);
           $nameDisplay.append($nameLink)
+
+           $nameDisplay.on( "mouseenter", function() {
+            $(this).addClass("highlighted")
+          });
+
+          $nameDisplay.on("mouseleave", function() {
+            $(this).removeClass("highlighted");
+          });
+
           $('#user-list').append($nameDisplay);
         });
 

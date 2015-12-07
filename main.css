@@ -27,11 +27,14 @@
   }
 
 
-    /*Formatting different elements on twittler*/
+/*Formatting different elements on twittler*/
+
+
+/* Formattin for body font, header elements, li elements, and container 
+elements are below. We also construct the background div, which will be
+used to fade out the background whenever a tweet is magnified*/
     body {
       font-family: Helvetica;
-
-
     }
 
       #container {
@@ -41,8 +44,41 @@
         right: 10px;
         bottom: 10px;
         background: #89CBE0;
+    }
+
+    h2 {
+        position: relative;
+        left: 38%;
+    }
+
+    h3 {
+        position: relative;
+        left: 15%;
+
+    }
+
+    h4 {
+        position: relative;
+        left: 15%;
+    }
+
+    li {
+        margin: 10px 0px;
+
+    }
+
+    .background.faded-out {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        background: gray;
+        opacity: 0.8;
+        z-index: 2;
       }
 
+/*Below is the format for the main live-stream of all the user tweets */
        #live-stream {
         position: absolute;
         top: 0px;
@@ -54,6 +90,18 @@
         border-radius: 5px;
       }
 
+      #live-tweet-list {
+        position: relative;
+        left: 10%;
+      }
+
+      #update-button {
+        position: relative;
+        left: 40%;
+      }
+
+/*Next is the formatting for the user side-bar, which shows all users 
+  being followed */
       #user-sidebar {
         position: absolute;
         top: 0px
@@ -63,6 +111,28 @@
         border: 1px solid;
         border-radius: 5px;
       }
+
+      .user-handle-panel {
+        text-align: center;
+        display: block;
+        padding: 10px;
+        margin: 10px 0;
+        background: white;
+        /*border: 1px solid;*/
+        border-radius: 5px;
+        width: 66%;
+        box-shadow: 7.5px 5px 5px black;
+
+      }
+
+      .user-handle-panel.highlighted {
+        width: 70%;
+        background: #AFC3C9;
+      }
+
+
+  /*Next is the formating for whichever user's timeline
+  is being looked at */
 
       #user-timeline {
         position: absolute;
@@ -75,60 +145,19 @@
         border-radius: 5px;
 
       }
-      h2 {
-        position: relative;
-        left: 38%;
-      }
-      h3 {
-        position: relative;
-        left: 15%;
-
-      }
-      h4 {
-        position: relative;
-        left: 15%;
-      }
 
       #user-list {
         position: relative;
         left: 15%;
-
-      }
-
-      #user-list > li {
-        text-align: center;
-        display: block;
-        padding: 10px;
-        margin: 10px 0;
-        background: white;
-        /*border: 1px solid;*/
-        border-radius: 5px;
-        width: 66%;
-        box-shadow: 7.5px 5px 5px black;
-
-      }
-
-      #live-tweet-list {
-        position: relative;
-        left: 10%;
-        
-
       }
 
       #user-tweets {
         position: relative;
         left: 15%;
-
-
       }
 
-      #update-button {
-        position: relative;
-        left: 40%;
-
-
-
-      }
+      
+/*Below is all the formatting for every tweet shown in a list*/
 
       .tweet {
         text-align: center;
@@ -140,12 +169,10 @@
         border-radius: 5px;
         width: 66%;
         box-shadow: 7.5px 5px 5px black;
-
-
-
       }
 
       .tweet.highlighted {
+        width: 70%;
         background: #AFC3C9;
       }
 
@@ -153,41 +180,16 @@
         background: white;
         position: fixed;
         font-size: 200%;
+        height: 150px;
+        width: 60%;
         left: 50%;
         top: 50%;
-        width: 50%;
         margin-top: -10%;
         margin-left: -25%;
         z-index: 3;
       }
-
-  
-      .background.faded-out {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
-        background: gray;
-        opacity: 0.8;
-        z-index: 2;
-      }
-
-
-      .tweet-message {
-
-
-      }
-
-      .timeStamp {
-
-
-      }
-
-      li {
-        margin: 10px 0px;
-
-      }
+      
+      
 
 
 
