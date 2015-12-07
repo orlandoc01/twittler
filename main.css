@@ -58,7 +58,7 @@
         position: absolute;
         top: 0px
         left: 0px;
-        height:25%;
+        height:35%;
         width:40%;
         border: 1px solid;
         border-radius: 5px;
@@ -68,7 +68,7 @@
         position: absolute;
         bottom: 0px;
         left: 0px;
-        height: 75%;
+        height: 65%;
         width: 40%;
         border: 1px solid;
         overflow: auto;
@@ -95,10 +95,23 @@
 
       }
 
+      #user-list > li {
+        text-align: center;
+        display: block;
+        padding: 10px;
+        margin: 10px 0;
+        background: white;
+        /*border: 1px solid;*/
+        border-radius: 5px;
+        width: 66%;
+        box-shadow: 7.5px 5px 5px black;
+
+      }
+
       #live-tweet-list {
         position: relative;
         left: 10%;
-        margin: 0 auto;
+        
 
       }
 
@@ -121,11 +134,13 @@
         text-align: center;
         display: block;
         padding: 10px;
-        margin: 10px 0px;
+        margin: 10px 0;
         background: white;
-        border: 1px solid;
+        /*border: 1px solid;*/
         border-radius: 5px;
         width: 66%;
+        box-shadow: 7.5px 5px 5px black;
+
 
 
       }
