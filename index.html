@@ -58,9 +58,11 @@
 
           //TweetList item is created, now we give it some event handling functions
           $tweetListItem.on( "mouseenter", function() {
+            $(this).parents('.side-panel').removeClass('highlighted');
             $(this).addClass("highlighted")
           });
           $tweetListItem.on("mouseleave", function() {
+            $(this).parents('.side-panel').addClass('highlighted');
             $(this).removeClass("highlighted");
           });
 
