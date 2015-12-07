@@ -7,7 +7,7 @@
 
   </head>
   <body>
-
+    <div class="background"></div>
     <div id="container">
       <div id="user-sidebar">
         <h4>Users you're following</h4>
@@ -54,7 +54,12 @@
 
           $tweetListItem.on("mouseleave", function() {
             $(this).removeClass("highlighted");
-          })
+          });
+
+          $tweetListItem.on("click", function() {
+            $(".background").toggleClass("faded-out");
+            $(this).toggleClass("selected");
+          });
 
           return $tweetListItem;
         }
@@ -108,6 +113,10 @@
             $tweetListItem.prependTo($stream);
 
           }
+        $('.background').on('click', function() {
+          $(this).removeClass('faded-out');
+
+        })
         });
 
     

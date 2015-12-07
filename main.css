@@ -134,6 +134,29 @@
         background: #AFC3C9;
       }
 
+      .tweet.selected {
+        position: fixed;
+        font-size: 200%;
+        left: 50%;
+        top: 50%;
+        width: 50%;
+        margin-top: -10%;
+        margin-left: -25%;
+        z-index: 3;
+      }
+
+  
+      .background.faded-out {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        background: gray;
+        opacity: 0.8;
+        z-index: 2;
+      }
+
 
       .tweet-message {
 
