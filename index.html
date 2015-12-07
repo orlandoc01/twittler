@@ -47,6 +47,15 @@
           $timeStamp.text('Tweeted on ' + tweet.created_at);
           $timeStamp.prependTo($tweetListItem);
           $tweet.prependTo($tweetListItem);
+
+          $tweetListItem.on( "mouseenter", function() {
+            $(this).addClass("highlighted")
+          });
+
+          $tweetListItem.on("mouseleave", function() {
+            $(this).removeClass("highlighted");
+          })
+
           return $tweetListItem;
         }
 

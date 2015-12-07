@@ -129,6 +129,12 @@
 
 
       }
+
+      .tweet.highlighted {
+        background: #AFC3C9;
+      }
+
+
       .tweet-message {
 
 
