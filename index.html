@@ -84,6 +84,28 @@
           });
         }
 
+
+        function switchPanels(event) {
+          var item = $(this);
+          if(item.hasClass('side-panel')) {
+            var mainPanel = $('.main-panel');
+            var sidePanel = $('.side-panel');
+
+            var mainPanelList = mainPanel.find('ul');
+            var sidePanelList = sidePanel.find('ul');
+
+            mainPanel.toggleClass('main-panel');
+            mainPanel.toggleClass('side-panel');
+            mainPanelList.toggleClass('main-tweets');
+            mainPanelList.toggleClass('side-tweets');
+
+            sidePanel.toggleClass('main-panel');
+            sidePanel.toggleClass('side-panel');
+            sidePanel.toggleClass('main-tweets');
+            sidePanel.toggleClass('side-tweets');
+          }
+        }
+
         //For each tweet within the streams.home array, we create a tweet li item and display
         //it in the $stream. We also keep track of whatever the lastTweet index was when finished.
         streams.home.forEach(function(tweet, index) {
@@ -136,13 +158,17 @@
 
         });
 
-        $('.side-panel').on('mouseenter', function() {
+        $('.side-panel, .main-panel').on('mouseenter', function() {
           $(this).addClass('highlighted');
         });
 
-        $('.side-panel').on('mouseleave', function() {
+        $('.side-panel, .main-panel').on('mouseleave', function() {
           $(this).removeClass('highlighted');
         });
+
+        $('.side-panel, .main-panel').on('click', switchPanels );
+      
+
 
 
       });
