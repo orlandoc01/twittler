@@ -37,7 +37,7 @@ used to fade out the background whenever a tweet is magnified*/
       font-family: Helvetica;
     }
 
-      #container {
+      .container {
         position: absolute;
         top: 10px;
         left: 10px;
@@ -79,7 +79,7 @@ used to fade out the background whenever a tweet is magnified*/
       }
 
 /*Below is the format for the main live-stream of all the user tweets */
-       #live-stream {
+       .container .live-stream {
         position: absolute;
         top: 0px;
         right: 0px;
@@ -90,19 +90,19 @@ used to fade out the background whenever a tweet is magnified*/
         border-radius: 5px;
       }
 
-      #live-tweet-list {
+      .container .live-stream .live-tweet-list {
         position: relative;
         left: 10%;
       }
 
-      #update-button {
+      .update-button {
         position: relative;
         left: 40%;
       }
 
 /*Next is the formatting for the user side-bar, which shows all users 
   being followed */
-      #user-sidebar {
+      .container .user-sidebar {
         position: absolute;
         top: 0px
         left: 0px;
@@ -112,7 +112,7 @@ used to fade out the background whenever a tweet is magnified*/
         border-radius: 5px;
       }
 
-      .user-handle-panel {
+      .container .user-sidebar .user-handle-panel {
         text-align: center;
         display: block;
         padding: 10px;
@@ -125,7 +125,7 @@ used to fade out the background whenever a tweet is magnified*/
 
       }
 
-      .user-handle-panel.highlighted {
+      .container .user-sidebar .user-handle-panel.highlighted {
         width: 70%;
         background: #AFC3C9;
       }
@@ -134,7 +134,7 @@ used to fade out the background whenever a tweet is magnified*/
   /*Next is the formating for whichever user's timeline
   is being looked at */
 
-      #user-timeline {
+      .container .user-timeline {
         position: absolute;
         bottom: 0px;
         left: 0px;
@@ -146,12 +146,12 @@ used to fade out the background whenever a tweet is magnified*/
 
       }
 
-      #user-list {
+      .container .user-timeline .user-list {
         position: relative;
         left: 15%;
       }
 
-      #user-tweets {
+      .container .user-timeline .user-timeline .user-list .user-tweets {
         position: relative;
         left: 15%;
       }

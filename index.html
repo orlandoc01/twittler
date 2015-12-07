@@ -8,21 +8,21 @@
   </head>
   <body>
     <div class="background"></div>
-    <div id="container">
-      <div id="user-sidebar">
+    <div class="container">
+      <div class="user-sidebar">
         <h4>Users you're following</h4>
-        <ul id="user-list"></ul>
+        <ul class="user-list"></ul>
       </div>
 
-      <div id="live-stream">
+      <div class="live-stream">
         <h2>Home Timeline</h2>
-        <button id="update-button">Update TimeLine</button>
-        <ul id="live-tweet-list"></ul>
+        <button class="update-button">Update TimeLine</button>
+        <ul class="live-tweet-list"></ul>
       </div>
 
-      <div id="user-timeline">
+      <div class="user-timeline">
         <h3>No User Selected</h3>
-        <ul id="user-tweets"></ul>
+        <ul class="user-tweets"></ul>
       </div> 
     </div>
 
@@ -31,7 +31,7 @@
       $(document).ready(function(){
 
         //$stream will reference the live tweet list
-        var $stream = $('#live-tweet-list');
+        var $stream = $('.live-tweet-list');
         var lastTweetIndex = -1;
 
         //Function below will create a new TweetList item to add to $stream whenever
@@ -75,7 +75,7 @@
           var user = user.slice(1) //Get rid of @ symbol
           $('#user-timeline').find('h3').text("@" + user + "'s Timeline")
           var tweets = streams.users[user];
-          var UserTweets = $('#user-tweets');
+          var UserTweets = $('.user-tweets');
           UserTweets.find('li').remove();
           tweets.forEach(function(tweet) {
             var $tweetItem = createTweetListItem(tweet);
@@ -110,12 +110,12 @@
             $(this).removeClass("highlighted");
           });
 
-          $('#user-list').append($nameDisplay);
+          $('.user-list').append($nameDisplay);
         });
 
         //we attach to the update button a function that continuously updates the $stream list
         //until we've read all of the tweets at the present moment whenever it is clicked
-        $("#update-button").on('click',function() {
+        $(".update-button").on('click',function() {
           while (lastTweetIndex != streams.home.length - 1) {
             lastTweetIndex++;
             var tweet = streams.home[lastTweetIndex];
@@ -130,9 +130,6 @@
           $("li.tweet").removeClass('selected');
 
         });
-
-
-    
 
       });
     </script>
