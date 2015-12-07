@@ -9,20 +9,21 @@
   <body>
     <div class="background"></div>
     <div class="container">
+
       <div class="user-sidebar">
         <h4>Users you're following</h4>
         <ul class="user-list"></ul>
       </div>
 
-      <div class="live-stream">
+      <div class="main-panel" id="live-tweets">
         <h2>Home Timeline</h2>
         <button class="update-button">Update TimeLine</button>
-        <ul class="live-tweet-list"></ul>
+        <ul class="main-tweets"></ul>
       </div>
 
-      <div class="user-timeline">
+      <div class="side-panel" id="user-timeline">
         <h3>No User Selected</h3>
-        <ul class="user-tweets"></ul>
+        <ul class="side-tweets"></ul>
       </div> 
     </div>
 
@@ -31,7 +32,7 @@
       $(document).ready(function(){
 
         //$stream will reference the live tweet list
-        var $stream = $('.live-tweet-list');
+        var $stream = $('#live-tweets').find('ul');
         var lastTweetIndex = -1;
 
         //Function below will create a new TweetList item to add to $stream whenever
@@ -73,9 +74,9 @@
            event.preventDefault();
           var user = $(this).text();
           var user = user.slice(1) //Get rid of @ symbol
-          $('.user-timeline').find('h3').text("@" + user + "'s Timeline")
+          $('#user-timeline').find('h3').text("@" + user + "'s Timeline")
           var tweets = streams.users[user];
-          var UserTweets = $('.user-tweets');
+          var UserTweets = $('#user-timeline').find('ul');
           UserTweets.find('li').remove();
           tweets.forEach(function(tweet) {
             var $tweetItem = createTweetListItem(tweet);

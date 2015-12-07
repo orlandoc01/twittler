@@ -79,7 +79,7 @@ used to fade out the background whenever a tweet is magnified*/
       }
 
 /*Below is the format for the main live-stream of all the user tweets */
-       .container .live-stream {
+       .container .main-panel {
         position: absolute;
         top: 0px;
         right: 0px;
@@ -90,7 +90,7 @@ used to fade out the background whenever a tweet is magnified*/
         border-radius: 5px;
       }
 
-      .container .live-stream .live-tweet-list {
+      .container .main-panel .main-tweets {
         position: relative;
         left: 10%;
       }
@@ -134,7 +134,7 @@ used to fade out the background whenever a tweet is magnified*/
   /*Next is the formating for whichever user's timeline
   is being looked at */
 
-      .container .user-timeline {
+      .container .side-panel {
         position: absolute;
         bottom: 0px;
         left: 0px;
@@ -146,15 +146,12 @@ used to fade out the background whenever a tweet is magnified*/
 
       }
 
-      .container .user-timeline .user-list {
+      .container .side-panel .side-tweets {
         position: relative;
         left: 15%;
       }
 
-      .container .user-timeline .user-timeline .user-list .user-tweets {
-        position: relative;
-        left: 15%;
-      }
+    
 
       
 /*Below is all the formatting for every tweet shown in a list*/
