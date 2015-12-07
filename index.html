@@ -73,7 +73,7 @@
            event.preventDefault();
           var user = $(this).text();
           var user = user.slice(1) //Get rid of @ symbol
-          $('#user-timeline').find('h3').text("@" + user + "'s Timeline")
+          $('.user-timeline').find('h3').text("@" + user + "'s Timeline")
           var tweets = streams.users[user];
           var UserTweets = $('.user-tweets');
           UserTweets.find('li').remove();
@@ -109,6 +109,10 @@
           $nameDisplay.on("mouseleave", function() {
             $(this).removeClass("highlighted");
           });
+
+          $nameDisplay.on("click", function() {
+            $(this).find('a').click ();
+          })
 
           $('.user-list').append($nameDisplay);
         });
