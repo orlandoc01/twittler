@@ -69,6 +69,7 @@
         //object when triggered with the on() function to prevent typicaly anchor behavior
         //when an anchor is clicked using the preventDefault method
         function showUserTimeline(event) {
+           event.stopPropagation();
            event.preventDefault();
           var user = $(this).text();
           var user = user.slice(1) //Get rid of @ symbol
