@@ -114,12 +114,14 @@
             $tweetListItem.prependTo($stream);
 
           }
-        $('.background').on('click', function() {
-          $(this).removeClass('faded-out');
-          $(".tweetItem.selected").removeClass('selected');
-
-        })
         });
+
+         $('.background').on('click', function() {
+          $(this).removeClass('faded-out');
+          $("li.tweet").removeClass('selected');
+
+        });
+
 
     
 

@@ -150,6 +150,7 @@
       }
 
       .tweet.selected {
+        background: white;
         position: fixed;
         font-size: 200%;
         left: 50%;
