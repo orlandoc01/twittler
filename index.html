@@ -136,6 +136,15 @@
 
         });
 
+        $('.side-panel').on('mouseenter', function() {
+          $(this).addClass('highlighted');
+        });
+
+        $('.side-panel').on('mouseleave', function() {
+          $(this).removeClass('highlighted');
+        });
+
+
       });
     </script>
 

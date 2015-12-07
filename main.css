@@ -85,8 +85,8 @@ used to fade out the background whenever a tweet is magnified*/
         right: 0px;
         bottom: 0px;
         width: 60%;
-        border: 1px solid;
-        overflow: auto;
+        border: 1px solid
+;        overflow: auto;
         border-radius: 5px;
       }
 
@@ -144,6 +144,10 @@ used to fade out the background whenever a tweet is magnified*/
         overflow: auto;
         border-radius: 5px;
 
+      }
+
+      .container .side-panel.highlighted {
+        background: #F5AF2F;
       }
 
       .container .side-panel .side-tweets {
