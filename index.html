@@ -17,7 +17,7 @@
 
       <div class="main-panel" id="live-tweets">
         <h2>Home Timeline</h2>
-        <button class="update-button">Update TimeLine</button>
+        <button class="update-button">Update Live Tweets TimeLine</button>
         <ul class="main-tweets"></ul>
       </div>
 
@@ -29,19 +29,26 @@
 
 
     <script>
+
       $(document).ready(function(){
 
-        //$stream will reference the live tweet list
+        //$stream will reference the total tweet list
         var $stream = $('#live-tweets').find('ul');
         var lastTweetIndex = -1;
 
-        //Function below will create a new TweetList item to add to $stream whenever
-        //it is given a tweet object
+        /*Function below will create a new TweetList item to add 
+        to $stream whenever it is given a tweet object
+        Each Tweet list item will be an li element with three sub
+        elements, 2 div's that hold the message and timestamp 
+        and 1 a element that holds a user handle */
         function createTweetListItem(tweet) {
+          //
           var $tweetListItem = $('<li class="tweet"></li>')
           var $tweet = $('<div class="tweet-message"></div>');
           var $timeStamp = $('<div class="timeStamp"></div>');
           var $handle = $('<a href="#" class="user-link">@'+tweet.user+'</a>');
+          
+          //We want the handle to point to the user Timeline when clicked
           $handle.on('click', showUserTimeline)
           $tweet.text(":" + tweet.message);
           $tweet.prepend($handle);
@@ -49,15 +56,19 @@
           $timeStamp.prependTo($tweetListItem);
           $tweet.prependTo($tweetListItem);
 
+          //TweetList item is created, now we give it some event handling functions
           $tweetListItem.on( "mouseenter", function() {
             $(this).addClass("highlighted")
           });
-
           $tweetListItem.on("mouseleave", function() {
             $(this).removeClass("highlighted");
           });
 
-          $tweetListItem.on("click", function() {
+          /*This will focus the tweet to the center and place a grayed
+          out background when a tweet is clicked on*/
+          $tweetListItem.on("click", function(event) {
+            event.preventDefault();
+            event.stopPropagation();
             $(".background").toggleClass("faded-out");
             $(this).toggleClass("selected");
           });
@@ -65,16 +76,21 @@
           return $tweetListItem;
         }
 
-        //Function below will trigger whenever a userhandle is clicked. It essentially
-        //shows all of a user's tweets in the user-timeline div. It is given an event
-        //object when triggered with the on() function to prevent typicaly anchor behavior
-        //when an anchor is clicked using the preventDefault method
+        /*Function below will trigger whenever a userhandle is clicked. It essentially
+        shows all of a user's tweets in the user-timeline div. It is given an event 
+        object when triggered with the on() function to prevent the click action from 
+        propogating up the DOM and triggering default behavior*/
         function showUserTimeline(event) {
+
            event.stopPropagation();
            event.preventDefault();
+
+          //Triggered by an anchor element, we grab the text and extract the name
           var user = $(this).text();
           var user = user.slice(1) //Get rid of @ symbol
           $('#user-timeline').find('h3').text("@" + user + "'s Timeline")
+
+          //We look for the users tweets, remove the last user's, and add new ones
           var tweets = streams.users[user];
           var UserTweets = $('#user-timeline').find('ul');
           UserTweets.find('li').remove();
@@ -84,7 +100,9 @@
           });
         }
 
-
+        /*The function below allows a user to switch which view is in the main panel
+        and which one is in the side-pane. This switching can only be done by clicking
+        on the side-panel, so we use a conditional to verify that has been clicked*/
         function switchPanels(event) {
           var item = $(this);
           if(item.hasClass('side-panel')) {
@@ -106,8 +124,8 @@
           }
         }
 
-        //For each tweet within the streams.home array, we create a tweet li item and display
-        //it in the $stream. We also keep track of whatever the lastTweet index was when finished.
+        /*For each tweet within the streams.home array, we create a tweet li item and display
+        it in the $stream. We also keep track of whatever the lastTweet index was when finished.*/
         streams.home.forEach(function(tweet, index) {
           var $tweetListItem = createTweetListItem(tweet);
           $tweetListItem.appendTo($stream);
@@ -115,24 +133,24 @@
           
         });
 
-        //For each user we follow, we want to create a li item and display it in the user-sidebar
-        //div. We also attach the showUserTimeline function to each user handle link, which will
-        //trigger whenever the handle is clicked
+        /*For each user we follow, we want to create a li item and display it in the user-sidebar
+        div. We also attach the showUserTimeline function to each user handle link, which will
+        /trigger whenever the handle is clicked*/
         users.forEach( function(name, index) {
           //alert(name)
           var $nameDisplay = $('<li class="user-handle-panel"></li>');
           var $nameLink = $('<a href="#" class="user-link">@'+name+'</a>');
+
           $nameLink.on('click', showUserTimeline);
           $nameDisplay.append($nameLink)
 
-           $nameDisplay.on( "mouseenter", function() {
+
+          $nameDisplay.on( "mouseenter", function() {
             $(this).addClass("highlighted")
           });
-
           $nameDisplay.on("mouseleave", function() {
             $(this).removeClass("highlighted");
           });
-
           $nameDisplay.on("click", function() {
             $(this).find('a').click ();
           })
@@ -140,8 +158,8 @@
           $('.user-list').append($nameDisplay);
         });
 
-        //we attach to the update button a function that continuously updates the $stream list
-        //until we've read all of the tweets at the present moment whenever it is clicked
+        /*we attach to the update button a function that continuously updates the $stream list
+        until we've read all of the tweets at the present moment whenever it is clicked*/
         $(".update-button").on('click',function() {
           while (lastTweetIndex != streams.home.length - 1) {
             lastTweetIndex++;
@@ -152,12 +170,16 @@
           }
         });
 
-         $('.background').on('click', function() {
+        /*Add an event handle to the grayed out background so that if it's clicked, everything
+        goes back to normal*/
+        $('.background').on('click', function() {
           $(this).removeClass('faded-out');
           $("li.tweet").removeClass('selected');
-
         });
 
+        /*We want to highlight the side-panel if the mouse is in to show the user it's clickable
+        We attach it to both the main-panel and side-panel, but the main-panel doesn't have a
+        .highlighted css style so nothing will happen for it*/
         $('.side-panel, .main-panel').on('mouseenter', function() {
           $(this).addClass('highlighted');
         });
@@ -166,6 +188,7 @@
           $(this).removeClass('highlighted');
         });
 
+        /*attach the switch panels to both the main and side panel*/
         $('.side-panel, .main-panel').on('click', switchPanels );
       
 

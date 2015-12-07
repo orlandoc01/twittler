@@ -46,20 +46,25 @@ used to fade out the background whenever a tweet is magnified*/
         background: #89CBE0;
     }
 
-    h2 {
+    .main-panel > h2,
+    .main-panel > h3 {
         position: relative;
-        left: 38%;
+        left: 50%;
+        margin-left: -10%;
     }
 
-    h3 {
+    .side-panel > h3,
+    .side-panel > h2 {
         position: relative;
-        left: 15%;
+        left: 50%;
+        margin-left: -20%;
 
     }
 
-    h4 {
+    .user-sidebar > h4 {
         position: relative;
-        left: 15%;
+        left: 50%;
+        margin-left: -20%;
     }
 
     li {
@@ -78,7 +83,7 @@ used to fade out the background whenever a tweet is magnified*/
         z-index: 2;
       }
 
-/*Below is the format for the main live-stream of all the user tweets */
+/*Below is the format for the main timeline and its list element*/
        .container .main-panel {
         position: absolute;
         top: 0px;
@@ -97,7 +102,8 @@ used to fade out the background whenever a tweet is magnified*/
 
       .update-button {
         position: relative;
-        left: 40%;
+        left: 50%;
+        margin-left: -10%; 
       }
 
 /*Next is the formatting for the user side-bar, which shows all users 
@@ -131,8 +137,8 @@ used to fade out the background whenever a tweet is magnified*/
       }
 
 
-  /*Next is the formating for whichever user's timeline
-  is being looked at */
+  /*Next is the formating for the side-bar timeline 
+  and its list element */
 
       .container .side-panel {
         position: absolute;
@@ -154,8 +160,6 @@ used to fade out the background whenever a tweet is magnified*/
         position: relative;
         left: 15%;
       }
-
-    
 
       
 /*Below is all the formatting for every tweet shown in a list*/
